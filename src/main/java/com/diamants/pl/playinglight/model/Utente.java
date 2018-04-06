@@ -51,7 +51,7 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
     @Column()
     private Long id;
 
-    @ApiModelProperty(position = 2, required = true, value = "Email is used as a system utentename")
+    @ApiModelProperty(position = 2, required = true, value = "Email is used as a system username")
     @Column(nullable = false)
     private String email;
 
