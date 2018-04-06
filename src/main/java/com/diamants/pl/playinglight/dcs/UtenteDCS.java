@@ -16,7 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class UtenteDCS {
 
     /**
-     *  Metodo che aggiunge un utente al DB
+     * Metodo che aggiunge un utente al DB
+     *
      * @param utenteDAO
      * @param nome
      * @param cognome
@@ -24,13 +25,17 @@ public class UtenteDCS {
      * @param password
      * @param numeroTelefono
      * @param tipo
-     * @return
+     * @param età
+     * @param disponibilità
+     * @param sesso
+     * @param skillLevel
+     * @return Utente
      */
     @Transactional
-    public static Utente addUtente(UtenteDAO utenteDAO, String nome, String cognome, String email, String password, String numeroTelefono, Short tipo){
+    public static Utente addUtente(UtenteDAO utenteDAO, String nome, String cognome, String email, String password, String numeroTelefono, Short tipo, Short età, Short disponibilità, Short sesso, Short skillLevel) {
 
 //      VERIFICO CHE L'EMAIL NON SIA GIà PRESENTE NEL DB    
-        if (utenteDAO.findByEmail(email) != null){
+        if (utenteDAO.findByEmail(email) != null) {
             return utenteDAO.findByEmail(email);
         }
 
@@ -41,23 +46,28 @@ public class UtenteDCS {
         utente.setEmail(email);
         utente.setNome(nome);
         utente.setPassword(password);
-        utente.setPhoneNumber(numeroTelefono);
+        utente.setNumeroTelefono(numeroTelefono);
         utente.setStatus(Utente.STATUS_REGISTER);
         utente.setTipo(tipo);
         utente.setUserAuthorities(null);
-        
+        utente.setDisponibilità(disponibilità);
+        utente.setEtà(età);
+        utente.setSesso(età);
+        utente.setSkillLevel(età);
+
         return (Utente) utenteDAO.save(utente);
     }
-    
+
     /**
-     *  Metodo che permette l'edit utente con paramentri che possono essere null
+     * Metodo che permette l'edit utente con paramentri che possono essere null
+     *
      * @param utenteDAO
      * @param id
      * @param nome
      * @param cognome
      * @param email
      * @param numeroTelefono
-     * @return
+     * @return Utente
      */
     public static Utente editUtente(UtenteDAO utenteDAO, Long id, String nome, String cognome, String email, String numeroTelefono) {
 
@@ -80,7 +90,7 @@ public class UtenteDCS {
             utente.setEmail(email);
         }
         if (numeroTelefono != null) {
-            utente.setPhoneNumber(numeroTelefono);
+            utente.setNumeroTelefono(numeroTelefono);
         }
 
         return (Utente) utenteDAO.save(utente);

@@ -75,7 +75,6 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
     public static final Short STATUS_ENABLED = 1;
     public static final Short STATUS_EXPIRED = 2;
     
-
     @Column
     private Short tipo;
 
@@ -84,6 +83,30 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
     public static final Short TYPE_DIRECTOR = 2;
     public static final Short TYPE_AREA_MANAGER = 3;
 
+    @Column(nullable = true)
+    private Short sesso;
+    
+    public static final Short SESSO_UOMO = 0;
+    public static final Short SESSO_DONNA = 1;
+    
+    @Column(nullable = true)
+    private Short età;
+    
+    @Column(nullable = true)
+    private Short skillLevel;
+    
+    public static final Short SKILL_PRINCIPIANTE = 0;
+    public static final Short SKILL_AVANZATO = 1;
+    public static final Short SKILL_PROFESSIONISTA = 2;
+    
+    @Column(nullable = true)
+    private Short disponibilità;
+    
+    public static final Short DISP_SEMPRE = 0;
+    public static final Short DISP_WEEKDAYS = 0;
+    public static final Short DISP_WEEKENDS = 0;
+    
+    
     private String numeroTelefono;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -164,14 +187,6 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return numeroTelefono;
-    }
-
-    public void setPhoneNumber(String numeroTelefono) {
-        this.numeroTelefono = numeroTelefono;
-    }
-
     @Override
     public String getPassword() {
         return password;
@@ -231,4 +246,51 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
         this.authorities = authorities;
     }
 
+    public Short getStato() {
+        return stato;
+    }
+
+    public void setStato(Short stato) {
+        this.stato = stato;
+    }
+
+    public Short getSesso() {
+        return sesso;
+    }
+
+    public void setSesso(Short sesso) {
+        this.sesso = sesso;
+    }
+
+    public Short getEtà() {
+        return età;
+    }
+
+    public void setEtà(Short età) {
+        this.età = età;
+    }
+
+    public Short getSkillLevel() {
+        return skillLevel;
+    }
+
+    public void setSkillLevel(Short skillLevel) {
+        this.skillLevel = skillLevel;
+    }
+
+    public Short getDisponibilità() {
+        return disponibilità;
+    }
+
+    public void setDisponibilità(Short disponibilità) {
+        this.disponibilità = disponibilità;
+    }
+
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
 }
