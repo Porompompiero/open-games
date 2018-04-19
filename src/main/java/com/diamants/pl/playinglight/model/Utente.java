@@ -51,31 +51,27 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
     @Column()
     private Long id;
 
-    @ApiModelProperty(position = 2, required = true, value = "Email is used as a system username")
     @Column(nullable = false)
     private String email;
 
     //@JsonIgnore
-    @ApiModelProperty(position = 3, required = true, value = "Encrypted Password for System Access")
     @Column(nullable = false)
     private String password;
 
-    @ApiModelProperty(position = 4, required = true, value = "User name")
     @Column(nullable = false)
     private String nome;
 
-    @ApiModelProperty(position = 5, required = true, value = "User last name")
     @Column(nullable = false)
     private String cognome;
 
-    @Column
+    @Column(nullable = false)
     private Short stato;
 
     public static final Short STATUS_REGISTER = 0;
     public static final Short STATUS_ENABLED = 1;
     public static final Short STATUS_EXPIRED = 2;
     
-    @Column
+    @Column(nullable = false)
     private Short tipo;
 
     public static final Short TYPE_SUPERADMIN = 0;
@@ -120,14 +116,14 @@ public class Utente extends Cancellable implements UserDetails, Serializable {
 
     }
 
-    public Utente(String email, Long id, String surname, String name, String password) {
+    public Utente(String email, String surname, String name, String password, Short tipo) {
 
         this.email = email;
-        this.id = id;
         this.cognome = surname;
         this.nome = name;
         this.password = password;
-
+        this.tipo = tipo;
+        this.stato = Utente.STATUS_ENABLED;
     }
 
     @Override
