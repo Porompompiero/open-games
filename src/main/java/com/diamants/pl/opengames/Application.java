@@ -1,4 +1,4 @@
-package com.diamants.pl.playinglight;
+package com.diamants.pl.opengames;
 
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;

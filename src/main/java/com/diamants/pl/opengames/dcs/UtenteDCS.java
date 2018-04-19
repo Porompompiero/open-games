@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.diamants.pl.playinglight.dcs;
+package com.diamants.pl.opengames.dcs;
 
-import com.diamants.pl.playinglight.dao.UtenteDAO;
-import com.diamants.pl.playinglight.model.Utente;
+import com.diamants.pl.opengames.dao.UtenteDAO;
+import com.diamants.pl.opengames.model.Utente;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
